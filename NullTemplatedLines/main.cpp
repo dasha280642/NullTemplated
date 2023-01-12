@@ -5,34 +5,36 @@ using namespace std;
 int string_length(const char str[]);
 void to_upper(char str[]);
 void to_lower(char str[]);
-
+void shrink(char str[]);
 
 void main()
 {
 	setlocale(LC_ALL, "Rus");
-
-	cout << (int)'a' << endl;
-	cout << (int)'A' << endl;
-	cout << 'A' - 'a'<< endl;
+	SetConsoleCP(1251);
+	//cout << (int)'a' << endl;
+	//cout << (int)'A' << endl;
+	//cout << 'A' - 'a'<< endl;
 
 	const int n = 256;
+	char str[n] = "Хорошо    живет   на   свете   Винни   Пух";
+
 	
-	char str[n] = {};
 	cout << " ";
 
-	SetConsoleCP(1251);
+	
 	//cin >> str;
 	//cin.getline(str, n);
 	SetConsoleCP(866);
 
 	cout << str << endl;
-	cout << "Вы ввели строку длиной: " << strlen(str)/*встроенная ф-ия*/ << " символов\n"; //string_length(str)
+	cout << "Вы ввели строку длиной: " << strlen(str)/*встроенная ф-ия*/ << " символов(а)\n"; //string_length(str)
 
-	to_upper(str);
+	//to_upper(str);
+	//cout << str << endl;
+	
+	shrink(str);
 	cout << str << endl;
-	
-	
-
+	system("pause");
 	
 }
 
@@ -63,7 +65,19 @@ void to_lower(char str[])
 	
 }
 
-
+void shrink(char str[]) //сдвигает символы 
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if (str[i] == ' ' && str[i + 1] == ' ')
+		{
+			for (int j = i; str[j]; j++)
+			{
+				str[j] = str[j + 1];
+			}
+		}
+	}
+}
 
 
 
